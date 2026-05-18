@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 const slangWords = [
@@ -195,6 +196,7 @@ const difficultyColor: Record<string, string> = {
 type Tab = "lessons" | "quiz";
 
 export default function Index() {
+  const navigate = useNavigate();
   const [tab, setTab] = useState<Tab>("lessons");
   const [flipped, setFlipped] = useState<Record<number, boolean>>({});
   const [filter, setFilter] = useState("All");
@@ -266,9 +268,17 @@ export default function Index() {
           >
             BRITISH SLANG
           </h1>
-          <p className="text-base font-medium max-w-md mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="text-base font-medium max-w-md mx-auto mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
             Молодёжный британский сленг — говори как настоящий лондонец
           </p>
+          <button
+            onClick={() => navigate("/presentation")}
+            className="font-display text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 inline-flex items-center gap-2"
+            style={{ background: "rgba(245,230,66,0.1)", color: "#f5e642", border: "1px solid rgba(245,230,66,0.3)" }}
+          >
+            <Icon name="FileText" size={15} />
+            Открыть презентацию для школы
+          </button>
         </div>
       </header>
 
